@@ -24,7 +24,7 @@ public class ElementsHelper {
 
     public void scrollDownMethod() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,120000)");
+        js.executeScript("window.scrollBy(0,400)");
     }
 
     public void scrollUpMethod() {

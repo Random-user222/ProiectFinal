@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import static extentUtility.ExtentManager.logEvents;
+import static extentUtility.ReportEventType.*;
 
 import java.awt.*;
 
@@ -12,20 +14,18 @@ import java.util.List;
 import java.util.Map;
 
 public class SignUpFullForm extends BasePage{
-        @FindBy(xpath = "//input[@type='text']")
-        private WebElement newUserName;
-        @FindBy(xpath= "//input[@data-qa='signup-email']")
-        private WebElement newUserEmail;
-        @FindBy(xpath = "//button[@data-qa='signup-button']")
-        private WebElement signUpNewUser;
-        @FindBy(xpath = "//*[@id=\"id_gender1\"]")
+        @FindBy(id = "id_gender1")
         private WebElement maleGenderElement;
-        @FindBy(xpath = "//*[@id=\"password\"]")
+
+        @FindBy(xpath = "//input[@data-qa='password']")
         private WebElement fillPassword;
-        @FindBy(xpath = "//*[@id=\"days\"]")
+
+        @FindBy(xpath = "//select[@data-qa='days']")
         private WebElement dayOfBirth;
-        @FindBy(xpath = "//*[@id=\"newsletter\"]")
+
+        @FindBy(xpath = "//input[@type='checkbox']")
         private WebElement newsletter;
+
         @FindAll({
                 @FindBy(id = "days"),
                 @FindBy(id = "months"),
@@ -33,41 +33,41 @@ public class SignUpFullForm extends BasePage{
         })
         private List<WebElement> dateOfBirth;
 
-        @FindBy(xpath = "//*[@id=\"optin\"]")
+        @FindBy(xpath = "//input[@id='optin']")
         private WebElement specialOffers;
 
-        @FindBy(xpath = "//*[@id=\"first_name\"]")
+        @FindBy(xpath = "//input[@data-qa='first_name']")
         private WebElement firstName;
 
-        @FindBy(xpath = "//*[@id=\"last_name\"]")
+        @FindBy(xpath = "//input[@data-qa='last_name']")
         private WebElement lastName;
 
-        @FindBy(xpath = "//*[@id=\"company\"]")
+        @FindBy(xpath = "//input[@data-qa='company']")
         private WebElement company;
 
-        @FindBy(xpath = "//*[@id=\"address1\"]")
+        @FindBy(xpath = "//input[@data-qa='address']")
         private WebElement address1;
 
-        @FindBy(xpath = "//*[@id=\"address2\"]")
+        @FindBy(xpath = "//input[@data-qa='address2']")
         private WebElement address2;
 
-        @FindBy(xpath = "//*[@id=\"state\"]")
+        @FindBy(xpath = "//select[@data-qa='country']")
+        private WebElement unitedStates;
+
+        @FindBy(xpath = "//input[@data-qa='state']")
         private WebElement state;
 
-        @FindBy(xpath = "//*[@id=\"city\"]")
+        @FindBy(xpath = "//input[@data-qa='city']")
         private WebElement city;
 
-        @FindBy(xpath = "//*[@id=\"zipcode\"]")
+        @FindBy(xpath = "//input[@data-qa='zipcode']")
         private WebElement zipCode;
 
-        @FindBy(xpath = "//*[@id=\"mobile_number\"]")
+        @FindBy(xpath = "//input[@data-qa='mobile_number']")
         private WebElement mobileNumber;
 
-        @FindBy(xpath = "//*[@id=\"form\"]/div/div/div/div[1]/form/button")
+        @FindBy(xpath = "//button[@data-qa='create-account']")
         private WebElement createAccount;
-
-        @FindBy(xpath = "//*[@id=\"country\"]")
-        private WebElement unitedStates;
 
         @FindBy(xpath = "//*[@href=\"/delete_account\"]")
         private WebElement deleteAccount;
@@ -91,32 +91,6 @@ public class SignUpFullForm extends BasePage{
             super(driver);
         }
 
-//    public void fillEntireForm() throws InterruptedException, AWTException {
-//            fillNewUserName();
-//            fillNewUSerEmail();
-//            clickSignUpButton();
-//            selectGender("Mrs.");
-//            fillPassword();
-//            setDateOfBirth("28", "September", "1982");
-//            elementsHelper.scrollDownMethod();
-//            clickOnNewsletter();
-//            clickOnSpecialOffers();
-//            fillFirstName();
-//            fillLastName();
-//            elementsHelper.scrollDownMethod();
-//            fillCompanyName();
-//            fillInAddress1();
-//            elementsHelper.scrollDownMethod();
-//            fillInAddress2();
-//            fillInState();
-//            fillInCity();
-//            fillInZipCode();
-//            elementsHelper.scrollDownMethod();
-//            fillInMobilePhone();
-//            clickOnCreateAccountButton();
-//            confirmationCreatingAccount.click();
-//            homepageButton();
-//        }
 
         public void fillEntireFormWithPropertiesData(Map<String, Object> fillFormData){
             selectGender((String) fillFormData.get("selectGender"));
@@ -136,83 +110,75 @@ public class SignUpFullForm extends BasePage{
             selectCountry((String) fillFormData.get("countryValues"));
             elementsHelper.clickElement(createAccount);
             elementsHelper.clickElement(homePageButton);
-//            clickOnLogOutButton();
+            logEvents(INFO_STEP, "Using DataProperties to fill the entire SignUp Form");
         }
 
         public void selectGender(String selectGender) {
             elementsHelper.clickElement(maleGenderElement);
+            logEvents(INFO_STEP, "Select the gender");
         }
 
         public void fillPassword(String passwordValues){
             fillPassword.sendKeys(passwordValues);
+            logEvents(INFO_STEP, "Fill the password input");
         }
 
         public void setDateOfBirth(String dateOfBirthValues){
             elementsHelper.fillElement(dayOfBirth, dateOfBirthValues);
             Assert.assertEquals(dateOfBirth.size(), 3);
-        }
-
-        public void clickOnNewsletter(){
-            elementsHelper.clickElement(newsletter);
-        }
-
-        public void clickOnSpecialOffers(){
-            elementsHelper.clickElement(specialOffers);
+            logEvents(INFO_STEP, "Enter the birthday");
         }
 
         public void fillFirstName(String firstNameValues){
             elementsHelper.fillElement(firstName, firstNameValues);
+            logEvents(INFO_STEP, "Fill the first name input");
         }
 
         public void fillLastName(String lastNameValues){
             elementsHelper.fillElement(lastName, lastNameValues);
+            logEvents(INFO_STEP, "Fill the last name input");
         }
 
         public void fillCompanyName(String companyNameValues){
             elementsHelper.fillElement(company, companyNameValues);
+            logEvents(INFO_STEP, "Fill the company name input");
         }
 
         public void fillAddress1Input(String firstAddressValues){
             elementsHelper.fillElement(address1, firstAddressValues);
+            logEvents(INFO_STEP, "Fill the first address input");
         }
 
         public void fillAddress2Input(String secondAddressValues){
             elementsHelper.fillElement(address2, secondAddressValues);
+            logEvents(INFO_STEP, "Fill the second address input");
         }
 
         public void fillStateInput(String stateValues){
             elementsHelper.fillElement(state, stateValues);
+            logEvents(INFO_STEP, "Fill the state input");
         }
 
         public void fillCityInput(String cityValues){
             elementsHelper.fillElement(city, cityValues);
+            logEvents(INFO_STEP, "Fill the city input");
         }
 
         public void fillZipCodeInput(String zipCodeValues){
             elementsHelper.fillElement(zipCode, zipCodeValues);
+            logEvents(INFO_STEP, "Fill the zip code input");
         }
 
         public void fillMobilePhoneInput(String phoneNumberValues){
             elementsHelper.fillElement(mobileNumber, phoneNumberValues);
+            logEvents(INFO_STEP, "Fill the phone number input");
         }
 
         public void selectCountry(String countryValues){
             elementsHelper.clickElement(unitedStates);
             elementsHelper.fillElement(unitedStates, countryValues);
+            logEvents(INFO_STEP, "Select the country from the list");
         }
-
-        public void clickOnCreateAccountButton(){
-            elementsHelper.clickElement(createAccount);
-        }
-
-        public void homepageButton(){
-            elementsHelper.clickElement(homePageButton);
-        }
-
-        public void clickOnLogOutButton(){
-            elementsHelper.clickElement(logOutButton);
-        }
-
 
         @Override
        public void isPageLoaded() {

@@ -62,5 +62,5 @@ public abstract class BasePage {
     }
 
     //Facem o metoda abstracta pe care fiecare pagina trebuie sa o implementeze pt a verifica daca pagina este incarcata corect;
-    abstract void isPageLoaded();
+    public abstract void isPageLoaded();
 }

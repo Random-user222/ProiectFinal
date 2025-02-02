@@ -3,22 +3,20 @@ package proiectFinal;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import static extentUtility.ExtentManager.logEvents;
+import static extentUtility.ReportEventType.*;
 
-import java.util.List;
 import java.util.Map;
 
 public class LogInPage extends BasePage {
 
-    @FindBy(xpath = "/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]/p")
-    private WebElement againAcceptCookies;
-
-    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")
+    @FindBy(xpath = "//input[@data-qa='login-email']")
     private WebElement logInEmailAddress;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")
+    @FindBy(xpath = "//input[@data-qa='login-password']")
     private WebElement logInPassword;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[1]/div/form/button")
+    @FindBy(xpath = "//button[@data-qa='login-button']")
     private WebElement logInButton;
 
     public LogInPage(WebDriver driver) {
@@ -26,28 +24,23 @@ public class LogInPage extends BasePage {
     }
 
     public void logInPageActions(Map<String, Object> logInFormData) {
-        List<String> emailAddressInputValues = (List<String>) logInFormData.get("emailAddressValues");
-        List<String> passwordInputValues = (List<String>) logInFormData.get("passwordValues");
-        for (int index = 0; index < emailAddressInputValues.size(); index++) {
-            logInEmailInput(emailAddressInputValues.get(index));
-            logInPasswordInput(passwordInputValues.get(index));
-            elementsHelper.clickElement(logInButton);
-            logInPassword.clear();
-            logInEmailAddress.clear();
-        }
-//        provideLogInData();
-//        usingDataProviderInTheForm(logInEmailAddress.getText(), logInPassword.getText());
+        logInEmailInput((String) logInFormData.get("emailAddressValues"));
+        logInPasswordInput((String) logInFormData.get("passwordValues"));
+        elementsHelper.clickElement(logInButton);
+        logEvents(INFO_STEP, "Using DataProperties to fill the LogIn Form");
     }
 
-    public void logInEmailInput(String emailAddressValues) {
-        elementsHelper.fillElement(logInEmailAddress, emailAddressValues);
+    public void logInEmailInput(String emailAddressValues){
+        elementsHelper.fillElement(logInEmailAddress, emailAddressValues );
+        logEvents(INFO_STEP, "Fill email input with valid values");
     }
 
     public void logInPasswordInput(String passwordValues){
         elementsHelper.fillElement(logInPassword, passwordValues);
+        logEvents(INFO_STEP, "Fill password input with valid values");
     }
 
     @Override
-   public void isPageLoaded() {
+    public void isPageLoaded() {
     }
 }
