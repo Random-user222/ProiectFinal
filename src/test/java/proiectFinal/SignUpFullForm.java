@@ -115,69 +115,56 @@ public class SignUpFullForm extends BasePage{
 
         public void selectGender(String selectGender) {
             elementsHelper.clickElement(maleGenderElement);
-            logEvents(INFO_STEP, "Select the gender");
         }
 
         public void fillPassword(String passwordValues){
             fillPassword.sendKeys(passwordValues);
-            logEvents(INFO_STEP, "Fill the password input");
         }
 
         public void setDateOfBirth(String dateOfBirthValues){
             elementsHelper.fillElement(dayOfBirth, dateOfBirthValues);
             Assert.assertEquals(dateOfBirth.size(), 3);
-            logEvents(INFO_STEP, "Enter the birthday");
         }
 
         public void fillFirstName(String firstNameValues){
             elementsHelper.fillElement(firstName, firstNameValues);
-            logEvents(INFO_STEP, "Fill the first name input");
         }
 
         public void fillLastName(String lastNameValues){
             elementsHelper.fillElement(lastName, lastNameValues);
-            logEvents(INFO_STEP, "Fill the last name input");
         }
 
         public void fillCompanyName(String companyNameValues){
             elementsHelper.fillElement(company, companyNameValues);
-            logEvents(INFO_STEP, "Fill the company name input");
         }
 
         public void fillAddress1Input(String firstAddressValues){
             elementsHelper.fillElement(address1, firstAddressValues);
-            logEvents(INFO_STEP, "Fill the first address input");
         }
 
         public void fillAddress2Input(String secondAddressValues){
             elementsHelper.fillElement(address2, secondAddressValues);
-            logEvents(INFO_STEP, "Fill the second address input");
         }
 
         public void fillStateInput(String stateValues){
             elementsHelper.fillElement(state, stateValues);
-            logEvents(INFO_STEP, "Fill the state input");
         }
 
         public void fillCityInput(String cityValues){
             elementsHelper.fillElement(city, cityValues);
-            logEvents(INFO_STEP, "Fill the city input");
         }
 
         public void fillZipCodeInput(String zipCodeValues){
             elementsHelper.fillElement(zipCode, zipCodeValues);
-            logEvents(INFO_STEP, "Fill the zip code input");
         }
 
         public void fillMobilePhoneInput(String phoneNumberValues){
             elementsHelper.fillElement(mobileNumber, phoneNumberValues);
-            logEvents(INFO_STEP, "Fill the phone number input");
         }
 
         public void selectCountry(String countryValues){
             elementsHelper.clickElement(unitedStates);
             elementsHelper.fillElement(unitedStates, countryValues);
-            logEvents(INFO_STEP, "Select the country from the list");
         }
 
         @Override

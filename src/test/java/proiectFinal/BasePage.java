@@ -6,10 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import propertyUtility.PropertyUtility;
-import webHelper.AlertHelpers;
 import webHelper.ElementsHelper;
-import webHelper.FrameHelpers;
-import webHelper.WindowHelpers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,18 +16,12 @@ public abstract class BasePage {
     //Vom folosi aceasta variabila in toate paginile care o sa mostenita Base Page;
     public WebDriver driver;
     public ElementsHelper elementsHelper;
-    public AlertHelpers alertHelpers;
-    public FrameHelpers frameHelpers;
-    public WindowHelpers windowHelpers;
     public PropertyUtility propertyUtility;
 
     //Facem un constructor care sa initializeze driver-ul;
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.elementsHelper = new ElementsHelper(driver);
-        this.alertHelpers = new AlertHelpers(driver);
-        this.frameHelpers = new FrameHelpers(driver);
-        this.windowHelpers = new WindowHelpers(driver);
         PageFactory.initElements(driver, this);
     }
 

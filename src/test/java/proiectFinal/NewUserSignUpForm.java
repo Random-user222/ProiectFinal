@@ -34,12 +34,10 @@ public class NewUserSignUpForm extends BasePage{
 
     public void newUserNameInput(String userName){
         elementsHelper.fillElement(newUserName, userName);
-        logEvents(INFO_STEP, "Fill new user input with new values");
     }
 
     public void newUserEmailInput(String userEmail){
         elementsHelper.fillElement(newUserEmail, userEmail);
-        logEvents(INFO_STEP, "Fill new email input with new values");
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import proiectFinal.HomePage;
 import propertyUtility.PropertyUtility;
 import static extentUtility.ExtentManager.*;
 
@@ -15,7 +16,7 @@ public class TestPage {
     public WebDriver driver;
     public PropertyUtility propertyUtility;
     public String testName;
-
+    public HomePage homePage;
     @BeforeSuite
     public void initiateReport(){
         initializeReport();
@@ -24,6 +25,7 @@ public class TestPage {
     @BeforeMethod
     public void openBrowser(){
         driver = new ChromeDriver();
+        homePage = new HomePage(driver);
 
         driver.get("https://www.automationexercise.com/");
         //Facem fereastra la dimensiunea maxima:

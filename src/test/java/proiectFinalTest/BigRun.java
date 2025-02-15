@@ -1,5 +1,7 @@
 package proiectFinalTest;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 import proiectFinal.*;
 import propertyUtility.PropertyUtility;
@@ -14,7 +16,7 @@ import static extentUtility.ReportEventType.PASS_STEP;
 public class BigRun extends TestPage{
 
     @Test
-    public void ProiectFinal() throws InterruptedException, AWTException {
+    public void ProiectFinal()  {
         HomePage homePage = new HomePage(driver);
         homePage.isPageLoaded();
         logEvents(PASS_STEP, "Verify if the HomePage is loaded correctly");
@@ -75,5 +77,7 @@ public class BigRun extends TestPage{
         logEvents(PASS_STEP, "Fill the LogIn form by using invalid values and DataProperties");
         homePage.deleteAccount();
         logEvents(PASS_STEP, "Last step, we delete the account");
+        homePage.goToHomePage();
+        logEvents(PASS_STEP, "Go back to the HomePage after the previous flow");
     }
 }

@@ -62,46 +62,38 @@ public class ShoppingPage extends BasePage{
 
     public void selectCategory(){
         elementsHelper.clickElement(category);
-        logEvents(INFO_STEP, "Select the product category we are looking for");
     }
 
     public void selectProduct(){
         elementsHelper.waitForElement(product);
         elementsHelper.clickElement(product);
-        logEvents(INFO_STEP, "Select the type of product we want");
     }
 
     public void addATShirt(){
         actions.scrollToElement(tShirt).click(tShirt).perform();
-        logEvents(INFO_STEP, "Select the product we like");
     }
 
     public void clickOnContinueShoppingButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]")));
         elementsHelper.clickElement(continueToShoppingButton);
-        logEvents(INFO_STEP, "Add the product to the cart and continue to shop");
     }
 
     public void selectBrand(){
         elementsHelper.clickElement(brand);
-        logEvents(INFO_STEP, "Select the brand we want");
     }
 
     public void selectBrandProduct(){
         elementsHelper.clickElement(viewProductDetails);
-        logEvents(INFO_STEP, "Check for more details about the product we want");
     }
 
     public void enterTheQuantity(){
         elementsHelper.keyboardEnters(quantity, Keys.BACK_SPACE);
         elementsHelper.fillElement(quantity, "2");
-        logEvents(INFO_STEP, "Enter the amount we want");
     }
 
     public void addToCart(){
         elementsHelper.clickElement(addToCart);
-        logEvents(INFO_STEP, "Add the product to the cart after selecting the amount");
     }
 
     @Override

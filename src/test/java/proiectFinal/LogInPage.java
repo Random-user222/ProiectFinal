@@ -32,12 +32,10 @@ public class LogInPage extends BasePage {
 
     public void logInEmailInput(String emailAddressValues){
         elementsHelper.fillElement(logInEmailAddress, emailAddressValues );
-        logEvents(INFO_STEP, "Fill email input with valid values");
     }
 
     public void logInPasswordInput(String passwordValues){
         elementsHelper.fillElement(logInPassword, passwordValues);
-        logEvents(INFO_STEP, "Fill password input with valid values");
     }
 
     @Override

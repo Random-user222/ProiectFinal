@@ -41,7 +41,7 @@ public class ReviewProductPage extends BasePage {
         elementsHelper.fillElement(reviewMessage, "This product has a very good quality and price as well");
         elementsHelper.clickElement(submitReview);
         logEvents(INFO_STEP, "Select an item and submit a review for it");
-        elementsHelper.threadSleep(300000000);
+        elementsHelper.threadSleep(1000);
     }
 
     @Override

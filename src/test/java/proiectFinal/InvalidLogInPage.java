@@ -37,6 +37,7 @@ public class InvalidLogInPage extends BasePage{
             } catch (Exception e) {
                 System.out.println("Email input not found. Ignoring this step.");
             }
+
             try {
                 WebElement emailField = driver.findElement(By.xpath("//input[@data-qa='login-password']"));
                 emailField.clear();
@@ -49,13 +50,11 @@ public class InvalidLogInPage extends BasePage{
 
     public void invalidLogInEmailInput(String emailAddressValues){
         elementsHelper.fillElement(logInEmailAddress, emailAddressValues );
-        logEvents(INFO_STEP, "Fill email input with invalid values");
     }
 
 
     public void invalidLogInPasswordInput(String passwordValues){
         elementsHelper.fillElement(logInPassword, passwordValues);
-        logEvents(INFO_STEP, "Fill password input with invalid values");
     }
 
     @Override
