@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import proiectFinal.HomePage;
 import propertyUtility.PropertyUtility;
 import static extentUtility.ExtentManager.*;
+import org.openqa.selenium.devtools.DevTools;
 
 public class TestPage {
 

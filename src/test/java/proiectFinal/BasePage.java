@@ -9,7 +9,9 @@ import propertyUtility.PropertyUtility;
 import webHelper.ElementsHelper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public abstract class BasePage {
 
@@ -31,6 +33,7 @@ public abstract class BasePage {
         ChromeOptions options = new ChromeOptions();
 
         options.addArguments("--incognito");
+        options.addArguments("--disable-popup-blocking");
 
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
@@ -38,7 +41,7 @@ public abstract class BasePage {
 
         options.setExperimentalOption("prefs", prefs);
 
-        WebDriver driver = new ChromeDriver(options);
+        ChromeDriver driver = new ChromeDriver(options);
 
         // Navighează pe site
         driver.get("https://www.automationexercise.com/");
@@ -49,7 +52,6 @@ public abstract class BasePage {
                 "Object.defineProperty(navigator, 'credentials', { value: { preventSilentAccess: () => {}, store: () => {}, get: () => {} } });"
         );
 
-        // Continuă cu pașii de automatizare...
     }
 
     //Facem o metoda abstracta pe care fiecare pagina trebuie sa o implementeze pt a verifica daca pagina este incarcata corect;

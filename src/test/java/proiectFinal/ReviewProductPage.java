@@ -11,10 +11,10 @@ public class ReviewProductPage extends BasePage {
     @FindBy(xpath = "//span[@class='pull-right' and text()='(5)']")
     private WebElement brand;
 
-    @FindBy (xpath = "/html/body/section/div/div[2]/div[2]/div/div[4]/div/div[2]/ul/li/a")
+    @FindBy (xpath = "//a[@href=\"/product_details/28\"]")
     private WebElement viewProductDetails;
 
-    @FindBy (xpath = "//input[@id='name']")
+    @FindBy (xpath = "//input[@placeholder=\"Your Name\"]")
     private WebElement nameInput;
 
     @FindBy (xpath = "//input[@id='email']")

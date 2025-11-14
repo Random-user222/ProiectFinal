@@ -15,7 +15,7 @@ public class HomePage extends BasePage{
     @FindBy (xpath = "//i[@class='fa fa-lock']")
     private WebElement signUpOrLogIn;
 
-    @FindBy (xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a")
+    @FindBy (xpath = "//a[@href=\"/delete_account\"]")
     private WebElement deleteAccountButton;
 
     @FindBy (xpath = "//i[@class='fa fa-home']")

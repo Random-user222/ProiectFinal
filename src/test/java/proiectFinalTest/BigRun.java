@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.Map;
 
 import static extentUtility.ExtentManager.logEvents;
+import static extentUtility.ReportEventType.INFO_STEP;
 import static extentUtility.ReportEventType.PASS_STEP;
 
 public class BigRun extends TestPage{
